@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/SamarGooda/bakehouse-ITI.git', changelog: false, poll: false 
+                sh 'ls '
+            }
+        }
+        stage('build the image') {
+            steps {
+                sh 'docker build -t ahmednabil20/bankhouse-img:v1 -f Dockerfile .'
+            }
+        }
+        stage('Push the image to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: "password")]) {
+                    sh """
+                        echo "$password" | docker login -u "$username" --password-stdin
+                        docker push ahmednabil20/bankhouse-img:v1
+                    """
+                }
+            }
+        }
+    }
+}
