@@ -1,4 +1,4 @@
-# 🚀 CI/CD with Jenkins, Argo CD, and Minikube
+#  CI/CD with Jenkins and Argo CD
 
 This project demonstrates a **complete CI/CD pipeline** using **Jenkins** for Continuous Integration (CI) and **Argo CD** for Continuous Deployment (CD) — all running on a local **Minikube** Kubernetes cluster.
 
@@ -7,14 +7,16 @@ This project demonstrates a **complete CI/CD pipeline** using **Jenkins** for Co
 ## ⚙️ CI: Build and Push Docker Image using Jenkins
 
 1. **Jenkins Pipeline (Jenkinsfile)**  
-   - Builds the application Docker image from the source repository [`bakehouse-ITI`](https://github.com/SamarGooda/bakehouse-ITI).  
+   - Builds the application Docker image from the source repository [`bakehouse-ITI`](https://github.com/SamarGooda/bakehouse).  
    - Pushes the image to **Docker Hub**.  
 
 2. **Steps Overview**
-These steps are defined in the `Jenkinsfile` stored in the [`argocd-jenkins-demo`](github.com/ahmednabil208/argocd-jenkins-demo/blob/main/jenkinsfile) repository.  
+
+These steps are defined in the [`jenkinsfile`](github.com/ahmednabil208/argocd-jenkins-demo/blob/main/jenkinsfile) .  
+![Jenkins CI](images/jenkins.png)
 
 
-## 🧩 CD: Deploy Argo CD inside Minikube
+##  CD: Deploy Argo CD inside Minikube
 
 1. Start Minikube Cluster
 
@@ -29,7 +31,7 @@ wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install
 kubectl apply -n argocd -f install.yaml
 ```
 
-## 🌐 Access Argo CD UI using NGINX Ingress
+##  Access Argo CD UI using NGINX Ingress
 
 1. Enable the Ingress Controller
 
@@ -39,12 +41,41 @@ minikube addons enable ingress
 
 2. Create an Ingress for Argo CD
 
-the file are defined in the `argocd-ingress-server` stored in the [`argocd-jenkins-demo`](github.com/ahmednabil208/argocd-jenkins-demo/blob/main/jenkinsfile) repository.  
+The file are defined in the [`aargocd-ingress-server`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/argocd-ingress.yaml).  
 
 
-Add Host Entry
+Add Host Entry in /etc/hosts
 
 <minikube-ip>  argocd.local
 
 
-Access the Argo CD UI at 👉 https://argocd.local
+Access the Argo CD UI at  https://argocd.local
+
+##  Configure Argo CD Application to Connect Repo and Cluster
+
+
+The file are defined in the [`application.yaml`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/application.yaml).  
+
+Apply it:
+```bash
+kubectl apply -f argocd-app.yaml
+```
+![Argo CD UI](images/argocd-app.png)
+
+##  Access the Deployed Application
+
+Check the service type:
+```bash
+kubectl get svc -n my-app
+```
+
+If NodePort:
+```bash
+minikube ip
+```
+
+Access via:
+```bash
+http://<minikube-ip>:<node-port>
+```
+![aplication](images/app.png)
