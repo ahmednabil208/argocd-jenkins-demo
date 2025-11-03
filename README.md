@@ -44,7 +44,7 @@ minikube addons enable ingress
 2.1 The file are defined in the [`argocd-ingress`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/argocd-ingress.yaml)
 Apply it
 ```bash
-kubectl apply -n argocd -f argocd-ingress.yaml
+kubectl apply -f argocd-ingress.yaml
 ```
 
 2.2 Add Host Entry in /etc/hosts
