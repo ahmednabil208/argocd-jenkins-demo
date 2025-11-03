@@ -49,7 +49,7 @@ kubectl apply -f argocd-ingress.yaml
 
 2.2 Add Host Entry in /etc/hosts
 
-<minikube-ip>  argocd.local
+minikube-ip  argocd.local
 
 
 2.3 Access the Argo CD UI at  https://argocd.local
