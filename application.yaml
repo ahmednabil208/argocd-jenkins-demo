@@ -5,12 +5,19 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  
   source:
-    repoURL: https://github.com/ahmednabil208/helm-baker_house.git
+    repoURL: 'https://github.com/ahmednabil208/helm-baker_house.git'
     targetRevision: main
+    path: .
+    helm:
+      valueFiles:
+        - values.yaml
+
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: my-app
+    
   syncPolicy:
     automated:
       prune: true
