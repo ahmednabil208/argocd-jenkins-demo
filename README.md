@@ -41,15 +41,19 @@ minikube addons enable ingress
 
 2. Create an Ingress for Argo CD
 
-The file are defined in the [`aargocd-ingress-server`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/argocd-ingress.yaml)
+2.1 The file are defined in the [`argocd-ingress`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/argocd-ingress.yaml)
+Apply it
+```bash
+kubectl apply -n argocd -f argocd-ingress.yaml
+```
 
-
-Add Host Entry in /etc/hosts
+2.2 Add Host Entry in /etc/hosts
 
 <minikube-ip>  argocd.local
 
 
-Access the Argo CD UI at  https://argocd.local
+2.3 Access the Argo CD UI at  https://argocd.local
+
 
 ##  Configure Argo CD Application to Connect Repo and Cluster
 
