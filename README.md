@@ -7,7 +7,7 @@ This project demonstrates a **complete CI/CD pipeline** using **Jenkins** for Co
 ## ⚙️ CI: Build and Push Docker Image using Jenkins
 
 1. **Jenkins Pipeline (Jenkinsfile)**  
-   - Builds the application Docker image from the source repository [`bakehouse-ITI`](https://github.com/SamarGooda/bakehouse)  
+   - Builds the application Docker image from the source repository [`bakehouse`](https://github.com/SamarGooda/bakehouse-ITI)  
    - Pushes the image to **Docker Hub**.  
 
 2. **Steps Overview**
