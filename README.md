@@ -7,12 +7,12 @@ This project demonstrates a **complete CI/CD pipeline** using **Jenkins** for Co
 ## ⚙️ CI: Build and Push Docker Image using Jenkins
 
 1. **Jenkins Pipeline (Jenkinsfile)**  
-   - Builds the application Docker image from the source repository [`bakehouse-ITI`](https://github.com/SamarGooda/bakehouse).  
+   - Builds the application Docker image from the source repository [`bakehouse-ITI`](https://github.com/SamarGooda/bakehouse)  
    - Pushes the image to **Docker Hub**.  
 
 2. **Steps Overview**
 
-These steps are defined in the [`jenkinsfile`](github.com/ahmednabil208/argocd-jenkins-demo/blob/main/jenkinsfile) .  
+These steps are defined in the [`jenkinsfile`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/jenkinsfile)   
 ![Jenkins CI](images/jenkins.png)
 
 
@@ -41,7 +41,7 @@ minikube addons enable ingress
 
 2. Create an Ingress for Argo CD
 
-The file are defined in the [`aargocd-ingress-server`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/argocd-ingress.yaml).  
+The file are defined in the [`aargocd-ingress-server`](https://github.com/ahmednabil208/argocd-jenkins-demo/blob/main/argocd-ingress.yaml)
 
 
 Add Host Entry in /etc/hosts
